@@ -1,0 +1,30 @@
+<div>
+
+OI :D {{cliente.nome}} <br/>
+
+<form novalidate>
+
+<div>
+	<input type = "text" ng-model="cliente.nome" required />
+	<span ng-show =false>Campo nome obrigatório</span>
+</div>
+<input type = "button" value="salvar" ng-click="salvarCliente()"  />
+<input type = "button" value = "Cancelar" ng-model="cancelarAlteracaoCliente()"/>
+
+<fieldset>
+	<legend>Formulário</legend>
+	Valid: {{frm.cliente.$valid}}
+</fieldset>
+
+</form>
+
+<div ng-repeat = "cli in clientes" >
+	{{cli.id + " | " + cli.nome}}
+	<input type = "button" value = "Excluir" ng-click="excluirCliente(cli)" ></input>
+	<input type = "button" value = "Alterar" ng-click="alterarCliente(cli)" ></input>
+	<a href = "cliente/{{cli.id}}"> Detalhe</a>
+
+
+</div>
+
+</div>

@@ -21,19 +21,19 @@ public class ClienteController {
 	@Autowired
 	ServiceCliente cs ;
     
-    @RequestMapping(method=RequestMethod.POST, value ="demo/clientes", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method=RequestMethod.POST, value ="clientes", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Cliente> indexClientes(@RequestBody Cliente cliente){
         Cliente c = cs.cadastrarClientes(cliente);
         return new ResponseEntity<>(c, HttpStatus.CREATED);
     }
     
-    @RequestMapping(method=RequestMethod.GET, value ="demo/clientes", produces=MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method=RequestMethod.GET, value ="clientes", produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<Cliente>> buscarTodosOsClientes(){
         Collection<Cliente> clientesBuscados = cs.buscarTodos();
         return new ResponseEntity<>(clientesBuscados, HttpStatus.OK);
     }
     
-    @RequestMapping(method=RequestMethod.DELETE, value ="demo/clientes/{id}")
+    @RequestMapping(method=RequestMethod.DELETE, value ="clientes/{id}")
     public ResponseEntity<Cliente> removerCliente(@PathVariable Integer id){
         String msg;
     	Cliente clienteEncontrado = cs.buscarPorId(id);
@@ -49,7 +49,7 @@ public class ClienteController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     	
-    @RequestMapping(method=RequestMethod.PUT, value ="demo/clientes", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method=RequestMethod.PUT, value ="clientes", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Cliente> alterarClientes(@RequestBody Cliente cliente){
         String msg;
     	Cliente clienteAlterado = cs.buscarPorId(cliente.getId());

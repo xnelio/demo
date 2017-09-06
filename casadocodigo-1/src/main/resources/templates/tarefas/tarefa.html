@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>tarefas</title>
+</head>
+<body>
+	<h3>Adicionar tarefas</h3>
+    <form class="form-horizontal" action="adicionaTarefa" method="post" th:object="${tarefa}">
+    
+    <!-- sucesso  -->
+     <div class="alert alert-success" th:text="${mensagem}" th:if = "${not #strings.isEmpty(mensagem)}"></div>
+     
+     <!-- erro -->
+      <div class="alert alert-danger" th:if =  "${#fields.hasAnyErrors()}" >
+      	<div th:each="detailedError : ${#fields.detailedErrors()}">
+      	<span th:text="${detailedError.message}"></span>
+      </div>
+      </div>
+      
+      
+     <div class="panel panel-default">
+     	 Descrição: <br />
+      	<textarea name="descricao" rows="5" cols="100" th:field="*{descricao}" autofocus="autofocus" id="descricao">
+      	</textarea><br/>
+      <input type="submit" value="Adicionar"></input>
+      </div>
+    </form>
+    
+    <a class="btn btn-sm btn-success" href="/listaTarefa">Listar</a>
+ 
+    
+    
+</body>
+</html>
